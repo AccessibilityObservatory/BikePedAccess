@@ -15,13 +15,20 @@ with open(config_file, "r") as jsonfile:
 
 print('Set Java path...')
 java_home_path = config["java_path"]
+r5_path = config["r5_path"]
 
 # Set the JAVA_HOME environment variable
 os.environ["JAVA_HOME"] = java_home_path
 print(f"    JAVA_HOME is set to: {os.environ['JAVA_HOME']}")
 
+
 sys.argv.append("--verbose")
+sys.argv.extend([
+    "--r5-classpath",
+    r5_path
+])
 import r5py
+
 
 #build a multimodal transport network given street network
 def build_transportnetwork(data_path, osm_filename):

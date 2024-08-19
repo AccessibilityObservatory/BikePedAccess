@@ -1,5 +1,6 @@
 {
     "java_path" : "/opt/homebrew/Cellar/openjdk@11/11.0.14.1/libexec/openjdk.jdk/Contents/Home",
+    "r5_path" : "https://github.com/conveyal/r5/releases/download/v6.9/r5-v6.9-all.jar",
     "data_path" : "data",
     "osm_filename" : "cook_county_bike_2022.osm.pbf",
     "origin_filename" : "CookCountyCensusBlockCentroids2020_WithLatLong_V02_PD_updated.shp",
