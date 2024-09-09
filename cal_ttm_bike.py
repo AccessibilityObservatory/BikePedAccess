@@ -21,15 +21,21 @@ os.environ["JAVA_HOME"] = java_home_path
 print(f"    JAVA_HOME is set to: {os.environ['JAVA_HOME']}")
 
 sys.argv.append("--verbose")
-import r5py
+import r5py_ao
 
 #build a multimodal transport network given street network
-def build_transportnetwork(data_path, osm_filename):
-    osm_pbf = f"{data_path}/{osm_filename}"
+def build_transportnetwork(data_path, osm_filename, barrier_filename):
+    osm_path = f"{data_path}/{osm_filename}"
+    if barrier_filename:
+        barrier_path = f"{data_path}/{barrier_filename}"
+    else:
+        barrier_path = None
 
     try:
         #create a routable transport network, that is stored in the transport_network variable.
-        transport_network = r5py.TransportNetwork(osm_pbf)
+        transport_network = r5py_ao.TransportNetwork(
+            osm_pbf=osm_path,
+            barriers=barrier_path)
         print("    Network built success")
         return transport_network
     except Exception as e:
@@ -38,11 +44,11 @@ def build_transportnetwork(data_path, osm_filename):
 #build a multimodal transport network given street network
 def cal_bike_ttm(transport_network, origin_gdf, destination_gdf, max_lts, max_trip_duration, walk_speed, bike_speed):
 
-    travel_time_matrix_computer = r5py.TravelTimeMatrixComputer(
+    travel_time_matrix_computer = r5py_ao.TravelTimeMatrixComputer(
         transport_network,
         origins=origins_gdf,
         destinations=destinations_gdf,
-        transport_modes=[r5py.TransportMode.BICYCLE],
+        transport_modes=[r5py_ao.TransportMode.BICYCLE],
         max_time = max_trip_duration,
         speed_walking = walk_speed,
         speed_cycling = bike_speed,
@@ -61,6 +67,10 @@ if __name__ == "__main__":
     #routing inputs
     origin_filename = config["origin_filename"]
     destination_filename = config["destination_filename"]
+    try:
+        barrier_filename = config["barrier_filename"]
+    except KeyError:
+        barrier_filename = None
     max_lts = config["max_lts"]
     max_trip_duration = datetime.timedelta(minutes=config.get("max_trip_duration")) #in minutes
     bike_speed = config["bike_speed"] #in km/h
