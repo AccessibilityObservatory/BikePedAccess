@@ -24,7 +24,7 @@ sys.argv.append("--verbose")
 import r5py_ao
 
 #build a multimodal transport network given street network
-def build_transportnetwork(data_path, osm_filename, barrier_filename):
+def build_transportnetwork(data_path, osm_filename, barrier_filename=None):
     osm_path = f"{data_path}/{osm_filename}"
     if barrier_filename:
         barrier_path = f"{data_path}/{barrier_filename}"
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     #build a transport network given street network
     startTime = time.time()
     print("Building a transport network given street network...")
-    transport_network = build_transportnetwork(data_path, osm_filename)
+    transport_network = build_transportnetwork(data_path, osm_filename, barrier_filename)
 
     print("Calculating travel time matrix...")
     #calculate travel time matrixs
