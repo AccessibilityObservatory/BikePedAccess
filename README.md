@@ -50,6 +50,7 @@ Example configuration:
     "data_path" : "data",
     "osm_filename" : "cook_county_bike_2022.osm.pbf",
     "origin_filename" : "CookCountyCensusBlockCentroids2020_WithLatLong_V02_PD_updated.shp",
+    "shapefile_barrier" :  "barrier.shp",
     "destination_filename" : "TrailAccessPoints_WithLatLong_V06_PD_updated.shp",
     "max_lts" : 2,
     "max_trip_duration" : 30,
