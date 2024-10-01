@@ -50,7 +50,7 @@ Example configuration:
     "data_path" : "data",
     "osm_filename" : "cook_county_bike_2022.osm.pbf",
     "origin_filename" : "CookCountyCensusBlockCentroids2020_WithLatLong_V02_PD_updated.shp",
-    "shapefile_barrier" :  "barrier.shp",
+    "barrier_filename" : "barriers.shp",
     "destination_filename" : "TrailAccessPoints_WithLatLong_V06_PD_updated.shp",
     "max_lts" : 2,
     "max_trip_duration" : 30,
@@ -63,7 +63,8 @@ Configuration parameters:
 - `java_path` - A string character. The Java path. To know the Java path, run **/usr/libexec/java_home** if using Mac Terminal; or **echo %JAVA_HOME%** if using Windows Command Prompt.
 - `data_path`  - A string character. Location of the input datasets. Default to `./data` in the parent directory
 - `osm_filename` - A string character. Name of the OpenStreetMap file.
-- `origin_filename` - A string character. Filename of the data that contains points to be used as origins. The file should be either a POINT sf object with WGS84 CRS, or a data.frame containing the columns id, lon and lat.  
+- `origin_filename` - A string character. Filename of the data that contains points to be used as origins. The file should be either a POINT sf object with WGS84 CRS, or a data.frame containing the columns id, lon and lat.
+- `barrier_filename` - A string character. Filename of the data that contains network barrier features. This is optional.
 - `destination_filename` - A string character. Filename of the data that contains points to be used as destinations. The file should be either a POINT sf object with WGS84 CRS, or a data.frame containing the columns id, lon and lat.  
 - `max_lts` - An integer between 1 and 4. The maximum level of traffic stress that cyclists will tolerate. A value of 1 means cyclists will only travel through the quietest streets, while a value of 4 indicates cyclists can travel through any road.
 - `max_trip_duration` - An integer. The maximum trip duration in minutes.   
