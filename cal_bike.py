@@ -54,17 +54,18 @@ def resolve_modes(modes):
     return r5 modes
 
 #build a multimodal transport network given street network
-def cal_ttm(transport_network, origin_gdf, destination_gdf, modes, max_lts, max_trip_duration, walk_speed, bike_speed):
+def cal_ttm(transport_network, origin_gdf, destination_gdf, modes, max_lts, max_plts, max_trip_duration, walk_speed, bike_speed):
 
     travel_time_matrix_computer = r5py_ao.TravelTimeMatrixComputer(
         transport_network,
         origins=origins_gdf,
         destinations=destinations_gdf,
-        transport_modes=[r5py_ao.TransportMode.BICYCLE],
+        transport_modes=resolve_modes(modes),
         max_time = max_trip_duration,
         speed_walking = walk_speed,
         speed_cycling = bike_speed,
-        max_bicycle_traffic_stress = max_lts
+        max_bicycle_traffic_stress = max_lts,
+        max_pedestrian_traffic_stress = max_plts
     )
     travel_time_matrix = travel_time_matrix_computer.compute_travel_times()
     return travel_time_matrix
@@ -84,6 +85,7 @@ if __name__ == "__main__":
     except KeyError:
         barrier_filename = None
     max_lts = config["max_lts"]
+    max_plts = config["max_plts"]
     max_trip_duration = datetime.timedelta(minutes=config.get("max_trip_duration")) #in minutes
     bike_speed = config["bike_speed"] #in km/h
     walk_speed = config["walk_speed"] #in km/h
@@ -100,7 +102,7 @@ if __name__ == "__main__":
 
     print("Calculating travel time matrix...")
     #calculate travel time matrixs
-    ttm = cal_bike_ttm(transport_network, origins_gdf, destinations_gdf, max_lts, max_trip_duration, walk_speed, bike_speed)
+    ttm = cal_bike_ttm(transport_network, origins_gdf, destinations_gdf, max_lts, max_plts, max_trip_duration, walk_speed, bike_speed)
 
     print('    Calculated travel time matrix using approximately', f'{int(time.time() - startTime)}', 'seconds')
 
