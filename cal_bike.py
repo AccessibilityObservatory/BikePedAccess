@@ -41,8 +41,20 @@ def build_transportnetwork(data_path, osm_filename, barrier_filename=None):
     except Exception as e:
         print("    Error building transport network, aborting: {}".format( e))
 
+def resolve_modes(modes):
+    r5_modes = []
+    for m in modes:
+        match m:
+            case "walk":
+                r5.modes.append(r5py_ao.TransportMode.WALK)
+            case "bike":
+                r5.modes.append(r5py_ao.TransportMode.BICYCLE)
+            case _:
+                raise ValueError(f"Unrecognized mode '{m}'")
+    return r5 modes
+
 #build a multimodal transport network given street network
-def cal_bike_ttm(transport_network, origin_gdf, destination_gdf, max_lts, max_trip_duration, walk_speed, bike_speed):
+def cal_ttm(transport_network, origin_gdf, destination_gdf, modes, max_lts, max_trip_duration, walk_speed, bike_speed):
 
     travel_time_matrix_computer = r5py_ao.TravelTimeMatrixComputer(
         transport_network,
