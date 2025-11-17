@@ -1,12 +1,14 @@
 {
     "java_path" : "/opt/homebrew/Cellar/openjdk@11/11.0.14.1/libexec/openjdk.jdk/Contents/Home",
     "data_path" : "data",
-    "osm_filename" : "cook_county_bike_2022.osm.pbf",
-    "origin_filename" : "CookCountyCensusBlockCentroids2020_WithLatLong_V02_PD_updated.shp",
-    "destination_filename" : "TrailAccessPoints_WithLatLong_V06_PD_updated.shp",
+    "osm_filename" : "latest_tagged_cook_county_network.pbf",
+    "origin_filename" : "cook_blocks_100.shp",
+    "destination_filename" : "cook_blocks.shp",
+    "modes": ["walk"],
     "max_lts" : 2,
+    "max_plts": 3,
     "max_trip_duration" : 10,
     "bike_speed" : 18.0,
     "walk_speed" : 5.0,
-    "outputpath" : "blocks_to_trail_access_points_lts2.csv"
+    "outputpath" : "test.csv"
 }
