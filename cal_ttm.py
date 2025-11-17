@@ -51,7 +51,7 @@ def resolve_modes(modes):
                 r5.modes.append(r5py_ao.TransportMode.BICYCLE)
             case _:
                 raise ValueError(f"Unrecognized mode '{m}'")
-    return r5 modes
+    return r5_modes
 
 #build a multimodal transport network given street network
 def cal_ttm(transport_network, origin_gdf, destination_gdf, modes, max_lts, max_plts, max_trip_duration, walk_speed, bike_speed):
