@@ -102,7 +102,7 @@ if __name__ == "__main__":
 
     print("Calculating travel time matrix...")
     #calculate travel time matrixs
-    ttm = cal_bike_ttm(transport_network, origins_gdf, destinations_gdf, max_lts, max_plts, max_trip_duration, walk_speed, bike_speed)
+    ttm = cal_ttm(transport_network, origins_gdf, destinations_gdf, max_lts, max_plts, max_trip_duration, walk_speed, bike_speed)
 
     print('    Calculated travel time matrix using approximately', f'{int(time.time() - startTime)}', 'seconds')
 
