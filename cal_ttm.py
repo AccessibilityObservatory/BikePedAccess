@@ -46,9 +46,9 @@ def resolve_modes(modes):
     for m in modes:
         match m:
             case "walk":
-                r5.modes.append(r5py_ao.TransportMode.WALK)
+                r5_modes.append(r5py_ao.TransportMode.WALK)
             case "bike":
-                r5.modes.append(r5py_ao.TransportMode.BICYCLE)
+                r5_modes.append(r5py_ao.TransportMode.BICYCLE)
             case _:
                 raise ValueError(f"Unrecognized mode '{m}'")
     return r5_modes
@@ -84,6 +84,7 @@ if __name__ == "__main__":
         barrier_filename = config["barrier_filename"]
     except KeyError:
         barrier_filename = None
+    modes = config["modes"] 
     max_lts = config["max_lts"]
     max_plts = config["max_plts"]
     max_trip_duration = datetime.timedelta(minutes=config.get("max_trip_duration")) #in minutes
@@ -102,7 +103,7 @@ if __name__ == "__main__":
 
     print("Calculating travel time matrix...")
     #calculate travel time matrixs
-    ttm = cal_ttm(transport_network, origins_gdf, destinations_gdf, max_lts, max_plts, max_trip_duration, walk_speed, bike_speed)
+    ttm = cal_ttm(transport_network, origins_gdf, destinations_gdf, modes, max_lts, max_plts, max_trip_duration, walk_speed, bike_speed)
 
     print('    Calculated travel time matrix using approximately', f'{int(time.time() - startTime)}', 'seconds')
 
