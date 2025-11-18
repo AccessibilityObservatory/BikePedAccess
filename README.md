@@ -47,7 +47,7 @@ Example configuration:
 {
     "java_path" : "/Library/Java/JavaVirtualMachines/openjdk-11.jdk",
     "data_path" : "data",
-    "osm_filename" : "cook_county_bike_2022.osm.pbf",
+    "osm_filename" : "cook_county_LTS_2022.osm.pbf",
     "origin_filename" : "CookCountyCensusBlockCentroids2020_WithLatLong_V02_PD_updated.shp",
     "barrier_filename" : "barriers.shp",
     "destination_filename" : "TrailAccessPoints_WithLatLong_V06_PD_updated.shp",
