@@ -34,7 +34,7 @@ Street network, destinations and origins are required as input datasets to perfo
 |... | ... (other fields will be ignored) |
 
 
-## Calculate bicycle travel time Access
+## Calculate travel time
 The tool contains a Python module and one configuration file:
 - `cal_ttm.py` is the analysis script that one would run for producing travel time access results. Running this analysis script requires an additional parameter, a configuration file `ttm_config.json`.  
 - `ttm_config.json` is the configuration file that supports the `cal_ttm.py`, it contains basic parameters for calculating bicycle travel time matrix.  
