@@ -45,19 +45,19 @@ Run analysis scripts:
 Example configuration:  
 ```
 {
-    "java_path" : "/Library/Java/JavaVirtualMachines/openjdk-11.jdk",
-    "data_path" : "data",
-    "osm_filename" : "cook_county_LTS_2022.osm.pbf",
-    "origin_filename" : "CookCountyCensusBlockCentroids2020_WithLatLong_V02_PD_updated.shp",
-    "barrier_filename" : "barriers.shp",
-    "destination_filename" : "TrailAccessPoints_WithLatLong_V06_PD_updated.shp",
+    "java_path": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+    "data_path": "data",
+    "osm_filename": "LTS_tagged_osm_network.pbf",
+    "origin_filename": "origins.shp",
+    "barrier_filename": "barriers.shp",
+    "destination_filename": "destinations.shp",
     "modes": ["walk"],
-    "max_lts" : 2,
+    "max_lts": 2,
     "max_plts": 4,
-    "max_trip_duration" : 30,
-    "bike_speed" : 18.0,
-    "walk_speed" : 5.0,
-    "outputpath" : "blocks_to_trail_access_points_lts2.csv"
+    "max_trip_duration": 30,
+    "bike_speed": 18.0,
+    "walk_speed": 5.0,
+    "outputpath": "lts4_ttm.csv"
 }
 ```
 Configuration parameters:    
